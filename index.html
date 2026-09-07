@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart AI Trip Planner</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Background Glows -->
+    <div class="background-glow glow1"></div>
+    <div class="background-glow glow2"></div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+
+        <div class="logo">
+            🌍 SmartTrip <span>AI</span>
+        </div>
+
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#planner">Planner</a>
+            <a href="#features">Features</a>
+            <a href="#about">About</a>
+        </div>
+
+        <button class="voice-btn" id="navVoiceBtn" onclick="toggleMicrophoneSystem()">
+            🎙️ Mic Assistant
+        </button>
+
+    </nav>
+
+
+    <!-- HERO -->
+    <section id="home" class="hero">
+
+        <div class="hero-content">
+
+            <div class="badge">
+                🤖 AI Powered Travel Intelligence
+            </div>
+
+            <h1>
+                Plan Your Journey
+                <span>Intelligently.</span>
+            </h1>
+
+            <p>
+                Discover destinations, calculate smart routes using
+                A* algorithm, GPS location detection, and voice control.
+            </p>
+
+            <button class="start-btn" onclick="scrollToPlanner()">
+                🚀 Start Planning
+            </button>
+
+        </div>
+
+        <div class="hero-card">
+
+            <div class="globe">
+                🌍
+            </div>
+
+            <h3>AI Travel Assistant</h3>
+
+            <p>
+                Your intelligent companion for exploring the world with GPS & Voice controls.
+            </p>
+
+            <div class="mini-stats">
+                <div>
+                    <strong>AI</strong>
+                    <small>Recommendations</small>
+                </div>
+
+                <div>
+                    <strong>A*</strong>
+                    <small>Smart Routing</small>
+                </div>
+
+                <div>
+                    <strong>GPS & Voice</strong>
+                    <small>Active</small>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PLANNER -->
+    <section id="planner" class="planner-section">
+
+        <div class="section-title">
+            <span>✈️ TRIP PLANNER</span>
+
+            <h2>Create Your Smart Journey</h2>
+
+            <p>
+                Enter your trip details or use GPS & Microphone Voice Input to auto-fill.
+            </p>
+
+            <div style="display:flex; justify-content:center; gap:10px; margin-top:15px;">
+                <div id="status" class="status-badge">Ready</div>
+                <div id="micStatusBadge" class="status-badge mic-badge" style="display:none;">🎙️ Listening...</div>
+                <div id="gpsStatusBadge" class="status-badge gps-badge" style="display:none;">📍 GPS Active</div>
+            </div>
+        </div>
+
+
+        <div class="planner-card">
+
+            <!-- Starting Location with GPS Detection Button -->
+            <div class="input-group">
+
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <label>📍 Starting Location</label>
+                    <button class="gps-btn" onclick="detectGPSLocation()" title="Detect current location via GPS">
+                        📡 Use GPS
+                    </button>
+                </div>
+
+                <select id="start">
+                    <option value="Amravati">Amravati</option>
+                    <option value="Nagpur">Nagpur</option>
+                    <option value="Wardha">Wardha</option>
+                    <option value="Pune">Pune</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Nashik">Nashik</option>
+                    <option value="Aurangabad">Aurangabad</option>
+                    <option value="Goa">Goa</option>
+                </select>
+
+                <small id="gpsCoordsText" style="color:var(--accent); font-size:0.75rem; display:none;"></small>
+
+            </div>
+
+
+            <div class="swap" id="swapBtn" onclick="swapLocations()" style="cursor:pointer;" title="Swap Locations">
+                ⇄
+            </div>
+
+
+            <div class="input-group">
+
+                <label>🏁 Destination</label>
+
+                <select id="destination">
+                    <option value="Nagpur">Nagpur</option>
+                    <option value="Amravati">Amravati</option>
+                    <option value="Wardha">Wardha</option>
+                    <option value="Pune" selected>Pune</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Nashik">Nashik</option>
+                    <option value="Aurangabad">Aurangabad</option>
+                    <option value="Goa">Goa</option>
+                </select>
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label>📅 Travel Date</label>
+
+                <input id="date" type="date">
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label>⏱️ Trip Days</label>
+
+                <input id="days" type="number" value="3" min="1" max="30">
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label>👥 Travelers</label>
+
+                <input id="travelers" type="number" value="1" min="1" max="10">
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label>💰 Budget</label>
+
+                <select id="budget">
+
+                    <option value="Budget">
+                        💵 Budget
+                    </option>
+
+                    <option value="Standard" selected>
+                        💰 Medium / Standard
+                    </option>
+
+                    <option value="Luxury">
+                        💎 Premium / Luxury
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label>🎯 Travel Interest</label>
+
+                <select id="travelType">
+
+                    <option value="adventure">
+                        🏔️ Adventure
+                    </option>
+
+                    <option value="culture" selected>
+                        🏛️ Culture
+                    </option>
+
+                    <option value="nature">
+                        🌳 Nature
+                    </option>
+
+                    <option value="family">
+                        👨‍👩‍👧 Family
+                    </option>
+
+                    <option value="relax">
+                        🏖️ Relaxation
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div style="grid-column: 1 / -1; display:flex; gap:15px; flex-wrap:wrap;">
+
+                <button class="generate-btn" style="flex:2;" onclick="generateTrip()">
+                    ✨ Generate Smart Trip
+                </button>
+
+                <button class="voice-btn" style="flex:1; border-radius: var(--radius-md); padding:16px; font-size:1rem;" onclick="toggleMicrophoneSystem()">
+                    🎙️ Speak Trip Details
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- RESULT -->
+    <section id="result" class="result-section">
+
+        <div class="section-title">
+
+            <span>🤖 AI RESULT</span>
+
+            <h2>Your Smart Trip</h2>
+
+        </div>
+
+        <div id="summaryCard" class="summary-stats" style="margin-bottom: 20px;">
+            <p><strong>Distance:</strong> <span id="distance">-</span></p>
+            <p><strong>Estimated Time:</strong> <span id="time">-</span></p>
+            <p><strong>Algorithm:</strong> <span id="algorithm">A* Search</span></p>
+            <p><strong>Total Estimated Price:</strong> <span id="price">-</span></p>
+        </div>
+
+
+        <div class="result-grid">
+
+            <div class="result-card">
+
+                <div class="result-icon">
+                    🗺️
+                </div>
+
+                <h3>Optimized Route</h3>
+
+                <div id="routeResult">
+                    Your A* route will appear here.
+                </div>
+
+            </div>
+
+
+            <div class="result-card">
+
+                <div class="result-icon">
+                    🏨
+                </div>
+
+                <h3>Hotel Recommendation</h3>
+
+                <div id="hotelResult">
+                    Recommended hotel will appear here.
+                </div>
+
+            </div>
+
+
+            <div class="result-card">
+
+                <div class="result-icon">
+                    💰
+                </div>
+
+                <h3>Cost Breakdown</h3>
+
+                <div id="costBreakdown">
+                    <p>Transport: <span id="transportCost">-</span></p>
+                    <p>Hotel: <span id="hotelCost">-</span></p>
+                    <p>Food: <span id="foodCost">-</span></p>
+                    <hr>
+                    <p><strong>Total: <span id="totalCost">-</span></strong></p>
+                </div>
+
+            </div>
+
+
+            <div class="result-card">
+
+                <div class="result-icon">
+                    🌤️
+                </div>
+
+                <h3>Weather & Recommendations</h3>
+
+                <div id="weatherResult">
+                    Weather information will appear here.
+                </div>
+                <div id="recommendationResult">
+                    AI recommendations will appear here.
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FEATURES -->
+    <section id="features" class="features-section">
+
+        <div class="section-title">
+
+            <span>⚡ SMART FEATURES</span>
+
+            <h2>Everything You Need For Your Trip</h2>
+
+            <p style="margin-top:6px; font-size:0.9rem; color:var(--primary);">💡 Click any feature card below to test it interactively!</p>
+
+        </div>
+
+
+        <div class="features-grid">
+
+            <div class="feature-card interactive-card" onclick="openFeature('ai-recommendations')">
+                <span>🧠</span>
+                <h3>AI Recommendations</h3>
+                <p>
+                    Personalized destinations based on your preferences.
+                </p>
+
+                <div class="feature-badge">Click to Try</div>
+            </div>
+
+
+            <div class="feature-card interactive-card" onclick="openFeature('astar')">
+                <span>🧭</span>
+                <h3>A* Route Optimization</h3>
+                <p>
+                    Find efficient routes using graph search.
+                </p>
+
+                <div class="feature-badge">Click to Try</div>
+            </div>
+
+
+            <div class="feature-card interactive-card" onclick="openFeature('weather')">
+                <span>🌦️</span>
+                <h3>Live Weather</h3>
+                <p>
+                    Check weather before planning your journey.
+                </p>
+
+                <div class="feature-badge">Click to Try</div>
+            </div>
+
+
+            <div class="feature-card interactive-card" onclick="openFeature('voice')">
+                <span>🎙️</span>
+                <h3>Microphone Voice Assistant</h3>
+                <p>
+                    Control your travel planner using your voice.
+                </p>
+
+                <div class="feature-badge">Click to Try</div>
+            </div>
+
+
+            <div class="feature-card interactive-card" onclick="openFeature('gps')">
+                <span>📍</span>
+                <h3>GPS Location Detection</h3>
+                <p>
+                    Detect your current location automatically.
+                </p>
+
+                <div class="feature-badge">Click to Try</div>
+            </div>
+
+
+            <div class="feature-card interactive-card" onclick="openFeature('chatbot')">
+                <span>💬</span>
+                <h3>AI Chatbot</h3>
+                <p>
+                    Ask travel questions using natural language.
+                </p>
+
+                <div class="feature-badge">Click to Try</div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- INTERACTIVE MODAL DIALOG -->
+    <div id="featureModal" class="modal-backdrop">
+
+        <div class="modal-card">
+
+            <div class="modal-header">
+                <h3 id="modalTitle">Feature Interactive Demo</h3>
+                <button class="modal-close" onclick="closeModal()">✕</button>
+            </div>
+
+            <div class="modal-body" id="modalBody">
+                <!-- Dynamic Content -->
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- FOOTER -->
+
+    <footer id="about">
+
+        <div class="logo">
+            🌍 SmartTrip <span>AI</span>
+        </div>
+
+        <p>
+            Intelligent Travel Planning using AI + A* Algorithm + GPS + Microphone Voice Input
+        </p>
+
+        <p>
+            © 2026 SmartTrip AI
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

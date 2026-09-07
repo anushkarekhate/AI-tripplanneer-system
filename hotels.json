@@ -1,0 +1,127 @@
+{
+    "Mumbai": {
+        "Budget": {
+            "name": "Hotel Sea View",
+            "price": 1800,
+            "rating": 3.8,
+            "location": "Central Mumbai"
+        },
+        "Standard": {
+            "name": "Grand Mumbai Hotel",
+            "price": 3500,
+            "rating": 4.3,
+            "location": "Andheri, Mumbai"
+        },
+        "Luxury": {
+            "name": "Royal Palace Mumbai",
+            "price": 7500,
+            "rating": 4.8,
+            "location": "South Mumbai"
+        }
+    },
+
+    "Pune": {
+        "Budget": {
+            "name": "City Stay Pune",
+            "price": 1500,
+            "rating": 3.7,
+            "location": "Shivajinagar"
+        },
+        "Standard": {
+            "name": "Pune Grand",
+            "price": 3000,
+            "rating": 4.2,
+            "location": "Koregaon Park"
+        },
+        "Luxury": {
+            "name": "Royal Pune Resort",
+            "price": 6500,
+            "rating": 4.8,
+            "location": "Kalyani Nagar"
+        }
+    },
+
+    "Goa": {
+        "Budget": {
+            "name": "Goa Beach Stay",
+            "price": 1800,
+            "rating": 3.9,
+            "location": "Calangute"
+        },
+        "Standard": {
+            "name": "Goa Paradise Resort",
+            "price": 4000,
+            "rating": 4.4,
+            "location": "Baga Beach"
+        },
+        "Luxury": {
+            "name": "Royal Goa Resort",
+            "price": 9000,
+            "rating": 4.9,
+            "location": "Candolim Beach"
+        }
+    },
+
+    "Nagpur": {
+        "Budget": {
+            "name": "Nagpur Comfort Inn",
+            "price": 1200,
+            "rating": 3.8,
+            "location": "Sitabuldi"
+        },
+        "Standard": {
+            "name": "Orange City Hotel",
+            "price": 2500,
+            "rating": 4.2,
+            "location": "Civil Lines"
+        },
+        "Luxury": {
+            "name": "Nagpur Grand Palace",
+            "price": 5500,
+            "rating": 4.7,
+            "location": "Wardha Road"
+        }
+    },
+
+    "Nashik": {
+        "Budget": {
+            "name": "Nashik Budget Stay",
+            "price": 1300,
+            "rating": 3.8,
+            "location": "Nashik Road"
+        },
+        "Standard": {
+            "name": "Nashik Grand",
+            "price": 2800,
+            "rating": 4.2,
+            "location": "Gangapur Road"
+        },
+        "Luxury": {
+            "name": "Nashik Luxury Resort",
+            "price": 6000,
+            "rating": 4.7,
+            "location": "Gangapur"
+        }
+    },
+
+    "Aurangabad": {
+        "Budget": {
+            "name": "Heritage Budget Inn",
+            "price": 1400,
+            "rating": 3.8,
+            "location": "Aurangabad"
+        },
+        "Standard": {
+            "name": "Heritage Grand",
+            "price": 2800,
+            "rating": 4.3,
+            "location": "City Centre"
+        },
+        "Luxury": {
+            "name": "Royal Heritage Resort",
+            "price": 6000,
+            "rating": 4.8,
+            "location": "Aurangabad"
+        }
+    }
+}
